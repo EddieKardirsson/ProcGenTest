@@ -29,4 +29,27 @@ private:
 	/** Mesh Component for the floor */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Room", meta = (AllowPrivateAccess = "true"))
 	class UStaticMeshComponent* Floor;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Room", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<AActor> ChairClass;
+
+	void SpawnItem(UClass* ItemToSpawn);
+
+	float GridHeight;
+	float SquareWidth;
+	float RoomLength;
+	float RoomWidth;
+
+	FVector TopLeft;
+	FVector BottomRight;
+	int32 GridSizeX;
+	int32 GridSizeY;
+
+	float Radius;
+
+	void CreateGrid();
+
+	FVector GetRandomPointInSquare(const FVector& UpperLeft, const FVector& LowerRight);
+
+	void PlacePointsOnGrid();
 };
